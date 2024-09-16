@@ -1,10 +1,9 @@
 # **Object-Detection**
 ## Overview
-This project demonstrates how to use YOLO models to detect persons and caps in live video streams using a webcam. It employs a custom-trained YOLOv8 model for cap detection and a pre-trained YOLOv8 model for person detection.
+This project demonstrates how to use a custom-trained YOLOv8 model for multi-class object detection in live video streams from a webcam. The system is designed to detect and annotate persons and caps in real-time.
 
 ## **Features**
-* **Person Detection**: Uses a pre-trained YOLOv8 model to detect persons in video frames.
-* **Cap Detection**: Utilizes a custom-trained YOLOv8 model to identify caps.
+* **Multi-Class Detection**: Utilizes a custom-trained YOLOv8 model to detect multiple classes, specifically persons and caps.
 * **Real-Time Processing**: Processes live video from a webcam and annotates frames with detected objects.
 * **Visualization**: Displays annotated frames with bounding boxes and labels for persons and caps.
   
@@ -23,9 +22,8 @@ This project demonstrates how to use YOLO models to detect persons and caps in l
    ```bash
       pip install opencv-python ultralytics
    
-3. Download Pre-trained Models:
-* Download the pre-trained YOLOv8 model for person detection (yolov8n.pt) from Ultralytics.
-* Ensure you have the custom-trained YOLOv8 model for cap detection (yolov8-custom-cap.pt). Place both models in the project directory.
+3. Download YOLOv8 Model:
+* Ensure you have the custom-trained YOLOv8 model (yolov8-custom.pt). Place this model file in the project directory.
  
 ## **Usage**
 1. Run the Script:
@@ -37,9 +35,15 @@ This project demonstrates how to use YOLO models to detect persons and caps in l
   
 ## **Code Explanation**
 * detect.py: Main script that loads the YOLO models, captures video from the webcam, performs detection, and annotates frames.
-  * Loads the custom YOLOv8 model (yolov8-custom-cap.pt) for cap detection.
-  * Loads the pre-trained YOLOv8 model (yolov8n.pt) for person detection.
-  * Captures video from the default webcam and processes each frame to detect and annotate persons and caps.
+  * **Loading the Model**: Loads the custom YOLOv8 model (yolov8-custom.pt) for multi-class detection.
+  * **Detection and AnnotationCaptures**:
+      * Detects persons and caps based on their class IDs.
+      * Annotates the detected objects with bounding boxes and labels.
+        
+## **Detection Class IDs**
+* Person: 3
+* Cap: 1
+Adjust these IDs based on how your custom model is trained if necessary.
 
 ## **Challenges and Solutions**
 * **Model Accuracy**: Ensured the custom-trained model could differentiate between caps and heads by expanding the dataset and refining annotations.
